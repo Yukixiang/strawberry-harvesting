@@ -1,0 +1,19 @@
+python tools/train.py configs/cswin/mask-rcnn_cswin-t-p4_fpn_1x_coco.py
+
+python tools/analysis_tools/analyze_logs.py plot_curve D:/build/work_dirs/mask-rcnn_cswin-t-p4_fpn_1x_coco/20230829_201739/vis_data/20230829_201739.json --keys loss_cls loss_bbox --out losses.pdf
+
+python tools/analysis_tools/analyze_logs.py plot_curve D:/build/work_dirs/mask-rcnn_cswin-t-p4_fpn_1x_coco/20230829_201739/vis_data/20230829_201739.json D:/build/work_dirs/mask-rcnn_swin-t-p4-w7_fpn_1x_coco/20230829_210112/vis_data/20230829_210112.json --keys bbox_mAP --legend run1 run2
+
+python tools/test.py configs/cswin/mask-rcnn_cswin-t-p4_fpn_1x_coco.py D:/build/work_dirs/mask-rcnn_cswin-t-p4_fpn_1x_coco/epoch_12.pth --out results.pkl --show
+
+python tools/test.py configs/cswin/mask-rcnn_cswin-t-p4_fpn_1x_coco.py D:/build/work_dirs/mask-rcnn_cswin-t-p4_fpn_1x_coco/epoch_12.pth --out results.pkl --show-dir mask-rcnn_cswin-t-p4_fpn_1x_coco_result
+
+python tools/analysis_tools/analyze_results.py configs/cswin/mask-rcnn_cswin-t-p4_fpn_1x_coco.py results.pkl results --topk 20
+
+
+python tools/analysis_tools/get_flops.py D:/build/work_dirs/mask-rcnn_cswin-t-p4_fpn_1x_coco/20230829_201739/vis_data/config.py
+
+
+python tools/analysis_tools/get_flops.py D:/build/work_dirs/mask-rcnn_swin-t-p4-w7_fpn_1x_coco/20230829_210112/vis_data/config.py
+
+python tools/analysis_tools/get_flops.py D:/build/work_dirs/mask-rcnn_r50_fpn_1x_coco/20230829_215338/vis_data/config.py
