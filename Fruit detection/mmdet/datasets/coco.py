@@ -55,18 +55,10 @@ class CocoDataset(BaseDetDataset):
 
     METAINFO = {
         'classes':
-        ('_background_','aeroplane','bicycle','bird',
-         'boat','bottle','bus','car','cat',
-         'chair','cow','diningtable','dog','horse',
-         'motorbike','person','potted plant','sheep','sofa',
-         'train','tv/monitor','strawberry'),
+        ('_background_','strawberry'),
         'palette':
         [(220, 20, 60), (119, 11, 32), (0, 0, 142), (0, 0, 230), (106, 0, 228),
-         (0, 60, 100), (0, 80, 100), (0, 0, 70), (0, 0, 192), (250, 170, 30),
-         (100, 170, 30), (220, 220, 0), (175, 116, 175), (250, 0, 30),
-         (165, 42, 42), (255, 77, 255), (0, 226, 252), (182, 182, 255),
-         (0, 82, 0), (120, 166, 157),(201, 57, 1),
-         (246, 0, 122), (191, 162, 208)]
+         (0, 60, 100), (0, 80, 100)]
     }
 
     COCOAPI = COCO
