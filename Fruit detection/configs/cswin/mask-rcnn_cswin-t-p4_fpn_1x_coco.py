@@ -4,7 +4,7 @@ _base_ = [
     '../_base_/schedules/schedule_1x.py', 
     '../_base_/default_runtime.py'
 ]
-pretrained = 'D:/build/cswin_tiny_224.pth'
+#pretrained = 'D:/build/cswin_tiny_224.pth'
 model = dict(
     type='MaskRCNN',
     backbone=dict(
@@ -21,11 +21,11 @@ model = dict(
         drop_rate=0.,
         attn_drop_rate=0.,
         use_chk=False,
-        #init_cfg=None 
-        init_cfg = dict(type='Pretrained', checkpoint=pretrained)
+        init_cfg=None 
+        #init_cfg = dict(type='Pretrained', checkpoint=pretrained)
     ),
     roi_head=dict(
-        bbox_head=dict(num_classes=22), mask_head=dict(num_classes=22)),
+        bbox_head=dict(num_classes=2), mask_head=dict(num_classes=2)),
     neck=dict(in_channels=[96, 192, 384, 768]))
 
 
@@ -48,7 +48,7 @@ param_scheduler = [
 
 # optimizer
 optim_wrapper = dict(
-    type='OptimWrapper',
+    type='AmpOptimWrapper',
     paramwise_cfg=dict(
         custom_keys={
             'absolute_pos_embed': dict(decay_mult=0.),
